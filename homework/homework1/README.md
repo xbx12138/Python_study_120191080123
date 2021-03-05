@@ -16,7 +16,7 @@
 
 7 打印输出9*9乘法表，按照下面的格式：
 
-![img](https://github.com/xbx12138/Python_study_120191080123/blob/main/homework/homework1/pic/001.png)
+![img](https://raw.githubusercontent.com/xbx12138/Python_study_120191080123/blob/main/homework/homework1/pic/001.png)
 
 8 设计一个数据结构，用来存放10个员工的信息并初始化，每个员工信息包括：工号，姓名，工龄，工资；  将这10个员工，按照工资从高到低打印输出；
 
