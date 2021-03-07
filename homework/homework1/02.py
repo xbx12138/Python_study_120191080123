@@ -18,5 +18,4 @@ if __name__ == "__main__":
 
     for k, v in dict1.items():
         if v > 80:
-            print('学号：', k)
-            print('分数：', v)
+            print('学号：', k, '分数：', v)
