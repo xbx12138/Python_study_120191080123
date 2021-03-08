@@ -31,6 +31,5 @@ if __name__ == "__main__":
     print('CCC', end='--')
     print()
     name = 'xbx12138'
-    print('亲爱的', end='')
-    print(name,end=':\n')
+    print('亲爱的%s：' % name)
     print('\t请点击链接激活用户：激活用户')
