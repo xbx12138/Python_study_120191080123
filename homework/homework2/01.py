@@ -14,7 +14,7 @@
 # import module your need
 
 def fun(a, b, c):
-    return len(a), b.len(), c.len()
+    return (len(a), len(b), len(c))
 
 
 if __name__ == '__main__':
