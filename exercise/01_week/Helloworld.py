@@ -9,4 +9,5 @@
 this is functiondescription
 '''
 # import module your need
-print("Hello，world！")
+def main():
+    print("Hello，world！")
