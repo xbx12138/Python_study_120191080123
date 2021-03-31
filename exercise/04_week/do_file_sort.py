@@ -8,8 +8,22 @@
 '''
 练习:   一个文件内容的如下,请按照行读取文件的内容,  将分数排序后输出到另外一个文件中:
             姓名      学号      分数
-            张三      101         78
-            李四      102         87
-            王五       103        83
+            张三      101       78
+            李四      102       87
+            王五      103       83
 '''
 # import module your need
+
+
+with open('file_sort.txt', 'r', encoding='utf-8') as f:
+    Head = f.readline().strip().split('      ')
+    data = f.read()
+    print(Head)
+    n = data.count('\n')
+    print(n)
+    lines = []
+
+    for i in range(n):
+        lines.append(f.readline().strip())
+
+    print(lines)

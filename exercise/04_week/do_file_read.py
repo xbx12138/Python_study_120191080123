@@ -14,6 +14,6 @@
 '''
 # import module your need
 
-f=open('file_sort.txt','r',encoding='utf-8')
-for line in f.readline():
+f = open('file_sort.txt', 'r', encoding='utf-8')
+for line in f.readlines():
     print(line.strip())
