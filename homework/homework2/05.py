@@ -16,7 +16,7 @@ import numbers
 
 def keep_two(dicts):
     for k, v in dicts.items():
-        if isinstance(v, numbers.Number):#value为数字时
+        if isinstance(v, numbers.Number):  # value为数字时
             length = 0
             num = v
             while num != 0:
@@ -28,9 +28,11 @@ def keep_two(dicts):
                     v //= 10
                     length -= 1
                 dicts[k] = v
-        # else:
+        else:  # value为字符串时
+            dicts[k] = v[0:2]
 
 
 if __name__ == '__main__':
-    dicts = {1: 'q', 2: 233, 3: 'e'}
+    dicts = {1: 'qwqeqwe', 2: 233, 3: 'e45wq6e456'}
     keep_two(dicts)
+    print(dicts)
