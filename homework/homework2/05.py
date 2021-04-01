@@ -9,12 +9,14 @@
 5  写函数，检查传入字典的每一个value长度，如果大于2，那么仅保留前两个长度的内容，并将新内容返回给调用者;
 '''
 
-
 # import module your need
 
-def keep_Two(dicts):
-    for k, v in dicts:
-        if v.isdigit():
+import numbers
+
+
+def keep_two(dicts):
+    for k, v in dicts.items():
+        if isinstance(v, numbers.Number):#value为数字时
             length = 0
             num = v
             while num != 0:
@@ -24,10 +26,11 @@ def keep_Two(dicts):
                 length -= 2
                 while length > 0:
                     v //= 10
+                    length -= 1
                 dicts[k] = v
+        # else:
 
 
 if __name__ == '__main__':
     dicts = {1: 'q', 2: 233, 3: 'e'}
-    keep_Two(dicts)
-    print(dicts[2])
+    keep_two(dicts)
