@@ -16,3 +16,14 @@ if __name__ == '__main__':
     with open('./3/score.txt', 'r', encoding='utf-8') as fr:
         Head = fr.readline().strip().split('    ')
         print(Head)
+        # 将信息存储在二维列表
+        a = []
+        for line in fr.readlines():
+            b = []
+            for i in line.strip().split('    '):
+                b.append(i)
+            a.append(b)
+        # 将分数转化
+        for i in a:
+            i[2] = float(i[2])
+        print(a)
