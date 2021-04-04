@@ -10,3 +10,9 @@
  然后按照分数从高到低进行排序输出
 '''
 # import module your need
+
+
+if __name__ == '__main__':
+    with open('./3/score.txt', 'r', encoding='utf-8') as fr:
+        Head = fr.readline().strip().split('    ')
+        print(Head)
