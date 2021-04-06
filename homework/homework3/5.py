@@ -31,8 +31,13 @@ The answer my friend is blowing in the wind\n\nThe answer is blowing in the wind
         fr.seek(0)
         fr.write(song_name + '\n' + tmp_data)
     with open(currentdir, 'r+', encoding='utf-8') as fr:  # 插入歌手名
-        content = str(fr.readlines())
+        content = '*'.join(fr.readlines())
         pos = content.find(song_name) + len(song_name);
-        with open(currentdir,'w+',encoding='utf-8') as fw:
-            content=content[:pos]+'   '+singer+content[pos:]
-            fw.writelines(content)
+        with open(currentdir, 'w+', encoding='utf-8') as fw:
+            content = content[:pos] + '   ' + singer + content[pos:]
+            content = content.replace('*', '')
+            fw.write(content)
+    with open(currentdir, 'a', encoding='utf-8') as fa:
+        fa.write(datetime)
+    with open(currentdir, 'r', encoding='utf-8') as fr:
+        print(fr.read())
