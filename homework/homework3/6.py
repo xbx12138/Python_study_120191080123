@@ -25,6 +25,15 @@ def getText():
         return txt
 
 
+def bubble_sort(lists):
+    count = len(lists)
+    for i in range(0, count):
+        for j in range(i + 1, count):
+            if lists[i][1] < lists[j][1]:
+                lists[i], lists[j] = lists[j], lists[i]
+    return lists
+
+
 if __name__ == '__main__':
     words = {}
     wordlist = []
@@ -38,14 +47,7 @@ if __name__ == '__main__':
     for k, v in words.items():
         tup = (k, v)
         wordlist.append(tup)
-    n=len(wordlist)
-    for i in range(1,n):
-        temp=wordlist[i]
-        j=i-1
-        while j>=0 and wordlist[j][1]<temp[1]:
-            wordlist[j+1]=wordlist[j]
-            j-=1
-        wordlist[j+1]=temp
 
-    for i in range(1,21):
+    bubble_sort(wordlist)
+    for i in range(1, 21):
         print(f'{i}: {wordlist[i][0]} 次数：{wordlist[i][1]}')
