@@ -14,3 +14,30 @@
 '''
 # import module your need
 
+import hashlib
+import json
+
+
+def log(dict):
+    md5=hashlib.md5()
+    name = input('请输入登录同学姓名:')
+    if name in dict:
+        user=input('请输入账号:')
+        if dict[name][0]==user:
+            pwd=input('请输入密码:')
+            md5.update(pwd.encode('utf-8'))
+            if dict[name][1]==md5.hexdigest():
+                print('登录成功！')
+            else:
+                print('登录失败！')
+        else:
+            print('登录失败！')
+    else:
+        print('登录失败！')
+
+
+if __name__ == '__main__':
+    dict = {}
+    with open('3/json_file.json', 'r', encoding='utf-8') as f:
+        dict = json.load(f)
+    log(dict)

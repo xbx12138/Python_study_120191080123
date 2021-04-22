@@ -12,16 +12,16 @@
 
 '''
 # import module your need
-import os
+
 import hashlib
 import json
 
 if __name__ == '__main__':
     acounts = {}
     for i in range(0, 5):
-        name_stu = input('请输入学生姓名：')
-        user_stu = input('请输入账号：')
-        pwd_stu = input('请输入密码')
+        name_stu = input('请输入学生姓名:')
+        user_stu = input('请输入账号:')
+        pwd_stu = input('请输入密码:')
         md5 = hashlib.md5()
         md5.update(pwd_stu.encode('utf-8'))
         pwd_md = md5.hexdigest()
