@@ -12,10 +12,29 @@
 # import module your need
 
 import os
+import datetime
 
-def display(path):
-    
+def list_dir(lpath):
+    list1 = os.listdir(lpath)
+    print('名称          修改日期                类型          大小')
+    for i in list1:
+        path = os.path.join(lpath, i)
+        path_idx = path.rfind('\\')
+        file_path_1 = path[:path_idx + 1]
+        file_name = path[path_idx + 1:]
+        date = datetime.datetime.fromtimestamp(os.path.getmtime(path))
+        update_time = date.strftime('%Y/%m/%d %H:%M')
+
+
+        if os.path.isfile(path):
+            path_type='文本文档'
+            file_size=os.stat(path).st_size
+            print(f'{file_name}      {update_time}         {path_type}       {file_size/1000}kb')
+        elif os.path.isdir(path):
+            path_type='文件夹'
+            print(f'{file_name}      {update_time}         {path_type}  ')
 
 
 if __name__ == '__main__':
-    path=input("请输入文件夹路径:")
+    path = input("请输入文件夹路径:")
+    list_dir(path)
