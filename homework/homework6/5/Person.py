@@ -16,20 +16,29 @@ import Dog
 
 
 class Person:
-    __HP = 100
-    __Ad = 10
+    __HP = 0
+    __Ad = 0
+
+    def __init__(self):
+        self.__HP = 100
+        self.__Ad = 10
 
     def hit(self, target):
         target.injured(self.__Ad)
 
     def injured(self, ad):
         self.__HP -= ad
-        self.__Ad -= 2
+        if self.__Ad >= 2:
+            self.__Ad -= 2
         if self.__HP <= 0:
             print('一人已被击杀！')
+            self.__HP = 0
 
     def islive(self):
         if self.__HP > 0:
             return True
         else:
             return False
+
+    def getHp(self):
+        return self.__HP
