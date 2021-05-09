@@ -31,7 +31,7 @@ class Person:
         if self.__Ad >= 2:
             self.__Ad -= 2
         if self.__HP <= 0:
-            print('一人已被击杀！')
+            print('————————————————\n一人已被击杀！\n————————————————\n')
             self.__HP = 0
 
     def islive(self):

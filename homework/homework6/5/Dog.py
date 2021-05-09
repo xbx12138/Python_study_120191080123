@@ -31,7 +31,7 @@ class Dog:
         if self.__Ad >= 3:
             self.__Ad -= 3
         if self.__HP <= 0:
-            print('一只狗已被击杀！')
+            print('————————————————\n一只狗已被击杀！\n————————————————\n')
             self.__HP = 0
 
     def islive(self):

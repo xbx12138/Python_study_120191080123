@@ -70,14 +70,15 @@ class fight:
                 d = random.randint(0, self.num_Dog - 1)
             if flag_hit:
                 self.persons[p].hit(self.dogs[d])
-                print(f'第{p + 1}个人打了第{d + 1}只狗    第{d + 1}只狗还剩{self.dogs[d].getHp()}血')
+                print(f'第{p + 1}个人→第{d + 1}只狗    第{d + 1}只狗HP：{self.dogs[d].getHp()}')
                 flag_hit = False
             else:
                 self.dogs[d].hit(self.persons[p])
-                print(f'     第{d + 1}只狗咬了第{p + 1}个人    第{p + 1}个人还剩{self.persons[p].getHp()}血')
+                print(f'     第{d + 1}只狗→第{p + 1}个人    第{p + 1}个人HP：{self.persons[p].getHp()}')
                 flag_hit = True
-            #time.sleep(1)
+            time.sleep(0.1)
+
 
 if __name__ == '__main__':
-    f = fight(1, 1)
+    f = fight(2, 3)
     f.start()
