@@ -41,8 +41,7 @@ def geturl():
         return urls
 
 
-def fun(urls, index):
-    for i in range(index * 10, index * 10 + 100):
+def fun(urls, i):
         if len(getHtmlText(urls[i])) == 4:
             print(f'{urls[i]} 不可访问')
         else:
@@ -50,9 +49,9 @@ def fun(urls, index):
 
 
 def ThreadPool():
-    with ThreadPoolExecutor(max_workers=10) as t:
+    with ThreadPoolExecutor(max_workers=1000) as t:
         urls = geturl()
-        all_task = [t.submit(fun(urls, index), index) for index in range(0, 10)]
+        all_task = [t.submit(fun(urls, index), index) for index in range(0, 1000)]
 
 
 if __name__ == '__main__':
