@@ -14,11 +14,12 @@
 
 '''
 # import module your need
-
+import ntpath
 from math import sqrt
 from multiprocessing import Pool
-import functools
-import time
+from multiprocessing import Queue
+import time, os, functools
+
 
 def timmer(func):
     @functools.wraps(func)
@@ -32,6 +33,7 @@ def timmer(func):
 
     return wrapper
 
+
 def isPrime(num):
     start = 2
     end = int(sqrt(num))
@@ -40,20 +42,42 @@ def isPrime(num):
             return False
     return True
 
+
 @timmer
 def no_mul():
     count = 0
-    for i in range(2,100000):
+    for i in range(2, 100000):
         if isPrime(i):
             count += 1
     return count
 
+
+def fun1(flag, q):
+    count = 0
+    print(f'{os.getpid()} start')
+    for i in range(flag * 25000, flag * 25000 + 25000):
+        if isPrime(i):
+            count += 1
+    print('11111')
+    q.put(count)
+
+
 @timmer
 def do_mul():
-    po=Pool(4)
-    for i in range(0,10):
-        po.apply_async()
+    sum = 0
+    po = Pool(4)
+    q = Queue()
+    for i in range(0, 4):
+        print(i, end=':')
+        po.apply_async(fun1, (i, q))
+    po.close()
+    po.join()
+    for i in range(q.qsize()):
+        sum += q.get(True)
+        print(sum)
+    return sum
+
 
 if __name__ == '__main__':
-
-
+    # print(no_mul())
+    print(do_mul())
