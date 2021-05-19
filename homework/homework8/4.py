@@ -11,24 +11,41 @@
    另外一个进程接收并打印消息；
 '''
 # import module your need
-from multiprocessing import Manager,Pool
-
+import sys
+from multiprocessing import Process, Queue
 import os, time, random
 
 
-def long_time_task(name):
-    print('Run task %s (%s)...' % (name, os.getpid()))
-    start = time.time()
-    time.sleep(random.random() * 3)
-    end = time.time()
-    print('Task %s runs %0.2f seconds.' % (name, (end - start)))
+# 写数据进程执行的代码:
+def write(q, fn):
+    sys.stdin = os.fdopen(fn)
+    message = input('发送消息：')
+    q.put(message)
 
-if __name__=='__main__':
-    print('Parent process %s.' % os.getpid())
-    p = Pool(4)
-    for i in range(5):
-        p.apply_async(long_time_task, args=(i,))
-    print('Waiting for all subprocesses done...')
-    p.close()
-    p.join()
-    print('All subprocesses done.')
+
+# 读数据进程执行的代码:
+def read(q):
+    while True:
+        if not q.empty():
+            value = q.get(True)
+            print(f'发来消息：{value}')
+        else:
+            break
+
+
+if __name__ == '__main__':
+    # 父进程创建Queue，并传给各个子进程：
+    q = Queue()
+    fn = sys.stdin.fileno()
+    while True:
+        pw = Process(target=write, args=(q,fn))
+        pr = Process(target=read, args=(q,))
+        # 启动子进程pw，写入:
+        pw.start()
+        # 等待pw结束:
+        pw.join()
+        # 启动子进程pr，读取:
+        pr.start()
+        pr.join()
+        # pr进程里是死循环，无法等待其结束，只能强行终止:
+
