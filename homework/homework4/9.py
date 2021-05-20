@@ -11,10 +11,9 @@
 # import module your need
 
 import requests
-import os
 
 url = 'https://www.runoob.com/wp-content/uploads/2014/05/python3.png'
-html=requests.get(url)
+html = requests.get(url)
 
-with open('./9/1.png','wb') as f:
+with open('./9/1.png', 'wb') as f:
     f.write(html.content)
