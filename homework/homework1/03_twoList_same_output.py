@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-# file:03.py
+# file:03_twoList_same_output.py
 # author:Asus
 # datetime:2021/3/4 18:27
 # software: PyCharm
