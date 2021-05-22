@@ -1,20 +1,22 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-# file:3.py
+# file:3_udp_client.py
 # author:Asus
-# datetime:2021/5/19 17:01
+# datetime:2021/5/22 10:20
 # software: PyCharm
 '''
 3 编写一个UDP的聊天程序，客户端和服务器端能互相聊天应答；
 '''
 # import module your need
 
-import socket,sys,os
+import os
+import socket
+import sys
 from multiprocessing import Pool
 
-local_addr = ('', 9999)
-dest_addr = ('127.0.0.1', 1234)
+local_addr = ('', 1234)
+dest_addr = ('127.0.0.1', 9999)
 
 
 def main():
@@ -42,7 +44,7 @@ def send(s, fn):
 def recv(s):
     while True:
         recv_data = s.recvfrom(1024)
-        print(recv_data[1][0]+':' + recv_data[0].decode('gbk'))
+        print(recv_data[1][0] + ':' + recv_data[0].decode('gbk'))
 
 
 if __name__ == '__main__':

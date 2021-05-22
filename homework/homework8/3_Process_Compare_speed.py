@@ -17,7 +17,7 @@
 import ntpath
 from math import sqrt
 from multiprocessing import Pool
-from multiprocessing import Queue
+from multiprocessing import Manager
 import time, os, functools
 
 
@@ -44,7 +44,7 @@ def isPrime(num):
 
 
 @timmer
-def no_mul():
+def no_mp():
     count = 0
     for i in range(2, 100000):
         if isPrime(i):
@@ -54,30 +54,49 @@ def no_mul():
 
 def fun1(flag, q):
     count = 0
-    print(f'{os.getpid()} start')
     for i in range(flag * 25000, flag * 25000 + 25000):
-        if isPrime(i):
+        if isPrime(i) and i != 0 and i != 1:
             count += 1
-    print('11111')
     q.put(count)
 
 
 @timmer
-def do_mul():
-    sum = 0
+def do_mp():
+    count = 0
     po = Pool(4)
-    q = Queue()
+    q = Manager().Queue()
     for i in range(0, 4):
-        print(i, end=':')
-        po.apply_async(fun1, (i, q))
+        po.starmap(fun1, [(i, q)])
     po.close()
     po.join()
     for i in range(q.qsize()):
-        sum += q.get(True)
-        print(sum)
-    return sum
+        count += q.get(True)
+    return count
+
+
+def fun2(flag, q):
+    count = 0
+    for i in range(flag * 10000, flag * 10000 + 10000):
+        if isPrime(i) and i != 0 and i != 1:
+            count += 1
+    q.put(count)
+
+
+@timmer
+def do_10_mp():
+    count = 0
+    po=Pool(10)
+    q=Manager().Queue()
+    for i in range(0,10):
+        po.starmap(fun2,[(i,q)])
+    po.close()
+    po.join()
+    for i in range(q.qsize()):
+        count += q.get(True)
+    return count
 
 
 if __name__ == '__main__':
-    # print(no_mul())
-    print(do_mul())
+    print(no_mp())
+    print(do_mp())
+    print(do_10_mp())
