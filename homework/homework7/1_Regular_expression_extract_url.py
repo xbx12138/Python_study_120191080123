@@ -15,7 +15,13 @@ import re
 
 
 def main():
-
+    with open('1/webspiderUrl.txt', 'r', encoding='utf-8') as fr:
+        with open('1/Urls.txt', 'a', encoding='utf-8') as fw:
+            weblines = fr.readlines()
+            for line in weblines:
+                matchUrl = re.search(r'(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]', line)
+                if matchUrl:
+                    fw.write(matchUrl.group()+'\n')
 
 
 if __name__ == "__main__":
