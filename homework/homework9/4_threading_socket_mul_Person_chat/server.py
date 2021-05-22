@@ -12,29 +12,14 @@
 # import module your need
 import socket
 import threading
-import os
-import datetime
-
-
-def get_ip():
-    """用来搞到IP"""
-    host = socket.gethostname()
-    ip = socket.gethostbyname(host)
-    return ip
-
-
-def get_time():
-    """得到发送时间"""
-    now = datetime.datetime.now()
-    send_time = now.strftime("%Y-%m-%d %H:%M:%S")
-    return send_time
+import get
 
 
 class ChatSever:
 
     def __init__(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.addr = (get_ip(), 10000)
+        self.addr = (get.get_ip(), 10000)
         self.users = {}
 
     def start_sever(self):
@@ -61,7 +46,7 @@ class ChatSever:
         while True:
             try:  # 测试后发现，当用户率先选择退出时，这边就会报ConnectionResetError
                 response = sock.recv(4096).decode("gbk")
-                msg = "{}用户{}发来消息：{}".format(get_time(), addr, response)
+                msg = "{}用户{}发来消息：{}".format(get.get_time(), addr, response)
 
                 for client in self.users.values():
                     client.send(msg.encode("gbk"))
@@ -74,7 +59,6 @@ class ChatSever:
         for client in self.users.values():
             client.close()
         self.sock.close()
-        os._exit(0)
 
 
 if __name__ == "__main__":
