@@ -1,0 +1,10 @@
+SELECT `学生表`.surname, `学生表`.`name`,`学生表`.age,`班级表`.className FROM	`班级表`	INNER JOIN `学生表` ON `学生表`.class =`班级表`.classId
+
+SELECT `学生表`.surname, `学生表`.`name`, `学生表`.age, `学生表`.sex, `班级表`.className FROM `班级表` INNER JOIN `学生表` ON `学生表`.class = `班级表`.classId WHERE `学生表`.surname = '黄' AND LENGTH(`学生表`.`name`)=3
+SELECT `学生表`.surname, `学生表`.`name`, `学生表`.age, `学生表`.sex, `班级表`.className FROM `班级表` INNER JOIN `学生表` ON `学生表`.class = `班级表`.classId WHERE `学生表`.id = 1 OR `学生表`.id = 3 OR `学生表`.id = 8
+SELECT `学生表`.surname, `学生表`.`name`, `学生表`.age, `学生表`.sex, `班级表`.className FROM `班级表` INNER JOIN `学生表` ON `学生表`.class = `班级表`.classId WHERE `学生表`.id >= 3 AND `学生表`.id <=8
+SELECT `学生表`.surname, `学生表`.`name`, `学生表`.age, `学生表`.sex, `班级表`.className FROM `班级表` INNER JOIN `学生表` ON `学生表`.class = `班级表`.classId WHERE `学生表`.sex = '男' ORDER BY `学生表`.age DESC
+SELECT COUNT(1) FROM `学生表` WHERE sex="女"
+SELECT AVG(age) AS "平均年龄" FROM `学生表`
+SELECT (SELECT AVG(age) FROM `学生表` WHERE sex = "男") AS "男生平均年龄",(SELECT AVG(age) FROM `学生表` WHERE sex = "女") AS "女生平均年龄"
+SELECT sex AS "性别" ,GROUP_CONCAT(DISTINCT CONCAT(surname,name) ) AS "姓名" FROM `学生表` GROUP BY sex
