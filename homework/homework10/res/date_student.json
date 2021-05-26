@@ -1,0 +1,8 @@
+[
+    {"name": "Frank", "age": 15, "genda": "\u7537"},
+    {"name": "tracy", "age": 20, "genda": "\u5973"},
+    {"name": "cythia", "age": 21, "genda": "\u5973"},
+    {"name": "\u738b\u4e94", "age": 19, "genda": "\u7537"},
+    {"name": "jackie", "age": 19, "genda": "\u7537"},
+    {"name": "Tom", "age": "22", "genda": "\u7537"}
+]
