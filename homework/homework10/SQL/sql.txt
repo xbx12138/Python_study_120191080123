@@ -1,5 +1,5 @@
 SELECT `学生表`.surname, `学生表`.`name`,`学生表`.age,`班级表`.className FROM	`班级表`	INNER JOIN `学生表` ON `学生表`.class =`班级表`.classId
-
+SELECT `学生表`.surname, `学生表`.`name`, `学生表`.age, `学生表`.sex, `班级表`.className FROM `班级表` INNER JOIN `学生表` ON `学生表`.class = `班级表`.classId
 SELECT `学生表`.surname, `学生表`.`name`, `学生表`.age, `学生表`.sex, `班级表`.className FROM `班级表` INNER JOIN `学生表` ON `学生表`.class = `班级表`.classId WHERE `学生表`.surname = '黄' AND LENGTH(`学生表`.`name`)=3
 SELECT `学生表`.surname, `学生表`.`name`, `学生表`.age, `学生表`.sex, `班级表`.className FROM `班级表` INNER JOIN `学生表` ON `学生表`.class = `班级表`.classId WHERE `学生表`.id = 1 OR `学生表`.id = 3 OR `学生表`.id = 8
 SELECT `学生表`.surname, `学生表`.`name`, `学生表`.age, `学生表`.sex, `班级表`.className FROM `班级表` INNER JOIN `学生表` ON `学生表`.class = `班级表`.classId WHERE `学生表`.id >= 3 AND `学生表`.id <=8
