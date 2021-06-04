@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+        <script src="../static/JS/test.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <body>
+        <h1>AngularJS TodoList</h1>
+        <input id="input_search" class="textedit" type="text" placeholder="123" />
+
+        <button id="bt_search">Go!</button>
+        <div id="section" class="table">
+           <table width="800" id="test" cellspacing="8" rules="rows" cellpadding="10">
+               <tr>
+                   <th align="left">#</th>
+                   <th align="left">Title</th>
+                   <th align="center">Control</th>
+               </tr>
+               {% for context in contexts %}
+                    <tr>
+                        <th align="left" class="todoList">{{context["number"]}}</th>
+                        <th align="left" class="UndoContent">{{context["content"]}}</th>
+                        <th align="center">
+                            <div>
+                                <input class="bt" type="button" value="Undo" custom=0 onclick="btOnclick(this)">
+                                <input class="bt" type="button" value="Edit">
+                                <input class="bt" type="button" value="Remove">
+                            </div>
+                        </th>
+                    </tr>
+               {% endfor %}
+            </table>
+        </div>
+
+
+    </body>
+</html>

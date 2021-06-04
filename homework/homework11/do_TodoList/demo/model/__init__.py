@@ -1,20 +1,19 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-# file:_init_.py
+# file:__init__.py.py
 # author:Asus
-# datetime:2021/5/25 17:50
+# datetime:2021/6/2 19:46
 # software: PyCharm
 '''
 this is functiondescription
 '''
 # import module your need
 
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from ..config import config
+from config import config
 
 # 创建引擎
 engine = create_engine(config.SQLALCHEMY_DATABASE_URI)
