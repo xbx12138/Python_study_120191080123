@@ -1,0 +1,8 @@
+certifi==2021.5.30
+cffi @ file:///C:/ci/cffi_1613247431367/work
+cryptography @ file:///C:/ci/cryptography_1616769504165/work
+greenlet @ file:///C:/ci/greenlet_1620913839232/work
+pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+PyMySQL @ file:///C:/ci/pymysql_1610464861530/work
+SQLAlchemy @ file:///C:/ci/sqlalchemy_1620712604985/work
+wincertstore==0.2

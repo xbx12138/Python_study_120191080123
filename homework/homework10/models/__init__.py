@@ -14,7 +14,7 @@ this is functiondescription
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from ..config import config
+from config import config
 
 # 创建引擎
 engine = create_engine(config.SQLALCHEMY_DATABASE_URI)
