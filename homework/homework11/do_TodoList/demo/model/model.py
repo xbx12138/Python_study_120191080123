@@ -33,3 +33,14 @@ class todo_list(Base):
             todo = {'number': content.id, 'content': content.content}
             todoList.append(todo)
         return todoList
+
+
+    @classmethod
+    def add_todo(cls,content):
+        try:
+            session.add(todo_list(content=content, date=datetime.now()))
+            session.commit()
+        except Exception as e:
+            session.rollback()
+            print(e)
+            return {'数据库异常，添加记录失败'}

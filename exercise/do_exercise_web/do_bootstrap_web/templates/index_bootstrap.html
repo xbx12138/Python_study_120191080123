@@ -1,2 +1,22 @@
-{% extends 'bootstrap/base.html' %}
-{% block title %}test{% endblock %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function sendmessage(){
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <form action="/" method="post" id="formid" >
+        <input type="text"  name="InNumber" id="InNumber" align="center" style="height: 50px; width: 400px; font-size: 40px" placeholder="20 30 40 ..">
+        <br>
+        <input type="button" name="btn1" value="进行排序" align="center" onclick="sendmessage()">
+        <br>
+        </form>
+        <p>{{result}} </p>>
+<!--        <input type="button" value="省市联动" align="center" onclick="changepage()">-->
+    </body>
+</html>
